@@ -1,10 +1,7 @@
 
 /*
- CIS 209: INTRO TO JAVA
- CHAPTER 6 PROJECT 
  CREDIT CARD VALIDATION PROGRAM
  */
-
 import java.util.Scanner;
 
 /*VALIDATION CLASS*/
@@ -13,13 +10,16 @@ public class Validation {
 	/*MAIN METHOD*/
 	public static void main(String []args)
 	{
-		/*DECLARE INPUT SCANNER*/
+	    /*DECLARE INPUT SCANNER*/
 	    Scanner input = new Scanner(System.in); 
-		/*PROMPTS USER TO ENTER CREDIT CARD NUMBER*/
+	    
+            /*PROMPTS USER TO ENTER CREDIT CARD NUMBER*/
 	    System.out.print("Enter a credit card number with the length of an integer: ");
-	    /*CREATES NUMBER VARIABLE*/
+	    
+            /*CREATES NUMBER VARIABLE*/
 	    long number = input.nextLong();
-	    /*PRINTS OUT VALID OR NOT VALID*/
+	    
+            /*PRINTS OUT VALID OR NOT VALID*/
 	    System.out.println(number + " is " + (isValid(number) ? "valid" : "invalid" ));
 	     	
 	}
@@ -27,28 +27,36 @@ public class Validation {
 	 /*IS VALID METHOD: NUMBER PARAMETER*/
 	 public static boolean isValid(long number)
      {
-		 /*CHECKS TO SEE IF NUMBERS ARE VALID WITHIN LIMITS*/
+         /*CHECKS TO SEE IF NUMBERS ARE VALID WITHIN LIMITS*/
     	 boolean valid = 
     			 (getSize(number) >= 13 && getSize(number) <= 16) && 
-    			 (prefixMatched(number, 4) || prefixMatched(number, 5) || 
-    			  prefixMatched(number, 37) || prefixMatched(number, 6)) && 
-    			 ((sumOfDoubleEvenPlace(number) + sumOfOddPlace(number)) % 10 == 0); 
-    			 /*RETURN VALID*/
+    			 
+                         (prefixMatched(number, 4) || prefixMatched(number, 5) || 
+    			 
+                         (prefixMatched(number, 37) || prefixMatched(number, 6)) && 
+    			 
+                         ((sumOfDoubleEvenPlace(number) + sumOfOddPlace(number)) % 10 == 0); 
+    			 
+                         /*RETURN VALID*/
     			 return valid; 
      }
 	 /*SUM OF DOUBLE EVEN METHOD: NUMBER PARAMETER*/
 	 public static int sumOfDoubleEvenPlace(long number)
-	 {   /*SUM INTEGER SET TO 0*/
+	 {   
+                 /*SUM INTEGER SET TO 0*/
 		 int sum = 0; 
-		 /*STRING NUMB*/
+		 
+                 /*STRING NUMB*/
 		 String numb = number + "";
-		 /*FOR LOOP: GET SIZE*/
+		 
+                 /*FOR LOOP: GET SIZE*/
 		 for (int i = getSize(number) - 2; i >= 0; i -= 2)
 		 {
 			 /*SUM: GET DIGIT PARSED NUMB VARIABLE*/
 			 sum += getDigit(Integer.parseInt(numb.charAt(i) + "") * 2);
 		 }
-		 /*RETURNS SUM*/
+		
+                 /*RETURNS SUM*/
 		 return sum; 
 	 } 
 		 
@@ -76,19 +84,20 @@ public class Validation {
 	 {
 		 /*SUM SET TO 0*/
 		 int sum = 0; 
-		 /*STRING NUMB*/
+		 
+                 /*STRING NUMB*/
 		 String numb = number + ""; 
-		 /*FOR LOOP: GET SIZE*/
+		 
+                 /*FOR LOOP: GET SIZE*/
 		 for (int i = getSize(number) - 1; i >= 0; i -= 2)
 		 {
 			 /*SUM INTEGER STATEMENT*/
 			 sum += Integer.parseInt(numb.charAt(i) + "");
 		 }
-		 /*RETURNS SUM*/
-		 return sum;  
+		
+                /*RETURNS SUM*/
+		return sum;  
 	 }
-	 
-	
 	 /*BOOLEAN PREFIX MATCHED METHOD: NUMBER, D PARAMETERS*/
 	public static boolean prefixMatched(long number, int d)
 	{
@@ -101,7 +110,8 @@ public class Validation {
 		{
 			/*STRING NUMB D*/
 			String numb = d + "";
-			/*RETURN NUMB LENGTH*/
+			
+                        /*RETURN NUMB LENGTH*/
 			return numb.length(); 
 		}
 		
@@ -113,7 +123,8 @@ public class Validation {
 		 {
 			/*STRING NUMB STATEMENT*/
 			String numb = number + "";
-			/*RETURNS PARSED LONG SUBSTRING*/
+			
+                        /*RETURNS PARSED LONG SUBSTRING*/
 			return Long.parseLong(numb.substring(0, k));
 		 }
 		    /*RETURNS NUMBER VARIABLE*/
